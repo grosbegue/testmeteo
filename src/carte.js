@@ -24,7 +24,6 @@ class Carte extends Component {
           <Row>
             <Col>
               {meteoArray.map(ville => {
-                console.log(ville._id);
                 return (
                   <Detail
                     ville={ville._id}
