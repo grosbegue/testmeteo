@@ -19,15 +19,20 @@ class Detail extends Component {
     const villeNow = this.props.ville;
 
     const { previsionArray } = this.state;
-    console.log(previsionArray);
+
     const { today } = this.state;
+
+    previsionArray.forEach(date => {
+      date.ville.forEach(ville => {
+        ville._date = date._date;
+      });
+    });
 
     const previsionInfo = previsionArray.map(date => {
       return date.ville.find(ville => {
         return ville._id === villeNow;
       });
     });
-    console.log(previsionInfo);
 
     return (
       <Card>
@@ -48,14 +53,19 @@ class Detail extends Component {
           </Row>
           {previsionInfo.map(date => {
             return (
-              <Row>
-                <Col>
-                  <p> Maximales :{date._temperature_maxi}°</p>
-                </Col>
-                <Col>
-                  <p>Minimales :{date._temperature_mini}</p>
-                </Col>
-              </Row>
+              <Container>
+                <Row>
+                  <p>{date._date}</p>
+                </Row>
+                <Row>
+                  <Col>
+                    <p> Maximales :{date._temperature_maxi}°</p>
+                  </Col>
+                  <Col>
+                    <p>Minimales :{date._temperature_mini}</p>
+                  </Col>
+                </Row>
+              </Container>
             );
           })}
         </Container>
