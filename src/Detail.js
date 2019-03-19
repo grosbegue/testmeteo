@@ -19,9 +19,8 @@ class Detail extends Component {
     const villeNow = this.props.ville;
 
     const { previsionArray } = this.state;
+    console.log(previsionArray);
     const { today } = this.state;
-
-    // console.log(previsionArray[0].ville);
 
     const previsionInfo = previsionArray.map(date => {
       return date.ville.find(ville => {
@@ -48,8 +47,6 @@ class Detail extends Component {
             </Col>
           </Row>
           {previsionInfo.map(date => {
-            // console.log(date.ville);
-            // console.log(date);
             return (
               <Row>
                 <Col>
